@@ -14,19 +14,55 @@ final class MovieQuizViewController: UIViewController {
     @IBOutlet weak var yesButton: UIButton!
     
     @IBAction func noButton(_ sender: UIButton) {
+        let currentQuestion = questions[currentQuestionIndex]
+        let givenAnswer = true
+        
+        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer )
     }
     
     @IBAction func yesButton(_ sender: UIButton) {
+        let currentQuestion = questions[currentQuestionIndex]
+        let givenAnswer = false
+        
+        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
     }
+    
+    var currentQuestionIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let firstQuestion = questions.first else {
+            return
+        }
+        let viewModel = convert(model: firstQuestion)
+        show(quiz: viewModel)
+        
+//        show(quiz: convert(model: questions[currentQuestionIndex]))
+    }
+    
+    func show(quiz step: QuizStepViewModel) {
+        imageView.image = step.image
+        textLabel.text = step.question
+        counterLabel.text = step.questionNumber
+    }
+    
+    func convert(model: QuizQuestion) -> QuizStepViewModel {
+        return QuizStepViewModel(image: UIImage(named: model.image) ?? UIImage(),
+                                 question: model.text,
+                                 questionNumber: "\(currentQuestionIndex + 1)/\(questions.count)")
+    }
+    
+    private func showAnswerResult(isCorrect: Bool) {
+        if isCorrect {
+            currentQuestionIndex += 1
+        }
     }
     
     struct QuizStepViewModel {
-        let image: UIImage
-        let question: String
-        let questionNumber: String
+        var image: UIImage
+        var question: String
+        var questionNumber: String
     }
     
     struct QuizResultViewModel {
@@ -36,9 +72,9 @@ final class MovieQuizViewController: UIViewController {
     }
     
     struct QuizQuestion {
-        let image: String
-        let text: String
-        let correctAnswer: Bool
+        var image: String
+        var text: String
+        var correctAnswer: Bool
     }
     
     let questions: [QuizQuestion] = [
