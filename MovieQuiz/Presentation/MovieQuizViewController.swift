@@ -1,11 +1,9 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
+    
+    
     // MARK: - Lifecycle
-    
-    
-    
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
@@ -32,7 +30,7 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private let questionsAmount: Int = 10
-    private var questionFactory: QuestionFactory = QuestionFactory()
+    private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
     private var currentQuestionIndex: Int = 0
     private var corectAnswers: Int = 0
@@ -40,16 +38,21 @@ final class MovieQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let firstQuestion = questionFactory.requestNextQuestion() {
-            currentQuestion = firstQuestion
-            let viewModel = convert(model: firstQuestion)
-            show(quiz: viewModel)
+        questionFactory = QuestionFactory(delegate: self)
+        questionFactory?.requestNextQuestion()
+    }
+    
+    //MARK: - QuestionFactoryDelegate
+    
+    func didReceiveNextQuestion(question: QuizQuestion?) {
+        guard let question = question else {
+            return
         }
-        //        guard let firstQuestion = questions.first else {
-        //            return
-        //        }
-        //        let viewModel = convert(model: firstQuestion)
-        //        show(quiz: viewModel)
+        currentQuestion = question
+        let viewModel = convert(model: question)
+        DispatchQueue.main.async { [weak self] in
+            self?.show(quiz: viewModel)
+        }
     }
     
     private func show(quiz step: QuizStepViewModel) {
@@ -73,12 +76,7 @@ final class MovieQuizViewController: UIViewController {
             self.currentQuestionIndex = 0
             self.corectAnswers = 0
             
-            if let firstQuestion = self.questionFactory.requestNextQuestion() {
-                self.currentQuestion = firstQuestion
-                let viewModel = self.convert(model: firstQuestion)
-                
-                self.show(quiz: viewModel)
-            }
+            self.questionFactory?.requestNextQuestion()
         }
         
         alert.addAction(action)
@@ -106,7 +104,6 @@ final class MovieQuizViewController: UIViewController {
             self.imageView.layer.borderColor = UIColor.clear.cgColor
         }
     }
-    
     private func showNextQuesionOrResult() {
         if currentQuestionIndex == questionsAmount - 1 {
             let text = "Ваш результат: \(corectAnswers) из \(questionsAmount)"
@@ -117,22 +114,11 @@ final class MovieQuizViewController: UIViewController {
             show(quiz: viewModel)
         } else {
             currentQuestionIndex += 1
-            
-            if let firstQuestion = questionFactory.requestNextQuestion() {
-                currentQuestion = firstQuestion
-                let viewModel = convert(model: firstQuestion)
-                
-                show(quiz: viewModel)
-            }
+            questionFactory?.requestNextQuestion()
         }
-        
-        
-        
-        
-        
-        
     }
 }
+
 /*
  Mock-данные
  
