@@ -27,6 +27,9 @@
 		CA3B68882955A25900AEDC1D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B68872955A25900AEDC1D /* AlertModel.swift */; };
 		CA3B688A2955A4F300AEDC1D /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B68892955A4F300AEDC1D /* AlertPresenter.swift */; };
 		CA3B688C2955AA0800AEDC1D /* AlertPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B688B2955AA0800AEDC1D /* AlertPresenterProtocol.swift */; };
+		CA8DBC82295851BF005AC859 /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DBC81295851BF005AC859 /* GameRecord.swift */; };
+		CA8DBC8429585EB1005AC859 /* StaticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DBC8329585EB1005AC859 /* StaticService.swift */; };
+		CA8DBC86295860EF005AC859 /* StaticServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DBC85295860EF005AC859 /* StaticServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		CA3B68872955A25900AEDC1D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		CA3B68892955A4F300AEDC1D /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		CA3B688B2955AA0800AEDC1D /* AlertPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterProtocol.swift; sourceTree = "<group>"; };
+		CA8DBC81295851BF005AC859 /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
+		CA8DBC8329585EB1005AC859 /* StaticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticService.swift; sourceTree = "<group>"; };
+		CA8DBC85295860EF005AC859 /* StaticServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,8 @@
 				CA3B688329545C8C00AEDC1D /* QuestionFactoryProtocol.swift */,
 				CA3B688529549B2200AEDC1D /* QuestionFactoryDelegate.swift */,
 				CA3B688B2955AA0800AEDC1D /* AlertPresenterProtocol.swift */,
+				CA8DBC8329585EB1005AC859 /* StaticService.swift */,
+				CA8DBC85295860EF005AC859 /* StaticServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				CA3B687F2954213400AEDC1D /* QuizResultViewModel.swift */,
 				CA3B68812954215200AEDC1D /* QuizQuestion.swift */,
 				CA3B68872955A25900AEDC1D /* AlertModel.swift */,
+				CA8DBC81295851BF005AC859 /* GameRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,13 +258,16 @@
 				CA3B688A2955A4F300AEDC1D /* AlertPresenter.swift in Sources */,
 				CA3B68882955A25900AEDC1D /* AlertModel.swift in Sources */,
 				AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */,
+				CA8DBC82295851BF005AC859 /* GameRecord.swift in Sources */,
 				CA3B688C2955AA0800AEDC1D /* AlertPresenterProtocol.swift in Sources */,
 				CA3B688429545C8C00AEDC1D /* QuestionFactoryProtocol.swift in Sources */,
+				CA8DBC8429585EB1005AC859 /* StaticService.swift in Sources */,
 				CA3B688629549B2200AEDC1D /* QuestionFactoryDelegate.swift in Sources */,
 				AD1ABAB62831907B00B3E448 /* MovieQuizViewController.swift in Sources */,
 				CA3B687E2954211500AEDC1D /* QuizStepViewModel.swift in Sources */,
 				CA3B68822954215200AEDC1D /* QuizQuestion.swift in Sources */,
 				CA3B687B29540EC600AEDC1D /* QuestionFactory.swift in Sources */,
+				CA8DBC86295860EF005AC859 /* StaticServiceProtocol.swift in Sources */,
 				AD77F5742857F8810062FB14 /* Date+Extensions.swift in Sources */,
 				AD1ABAB22831907B00B3E448 /* AppDelegate.swift in Sources */,
 				AD1ABAB42831907B00B3E448 /* SceneDelegate.swift in Sources */,

@@ -32,17 +32,75 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private var alert: AlertPresenterProtocol?
     private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
+    private var staticService: StaticService?
     
     private var currentQuestionIndex: Int = 0
     private var corectAnswers: Int = 0
     private let questionsAmount: Int = 10
     
+    private enum FileManagerError: Error {
+        case fileDoesntExist
+    }
+    
+    private func string(from documentURL: URL) throws -> String {
+        if !FileManager.default.fileExists(atPath: documentURL.path) {
+            throw FileManagerError.fileDoesntExist
+        }
+        return try String(contentsOf: documentURL)
+    }
+    
+    struct Actor: Codable {
+        let id: String
+        let image: String
+        let name: String
+        let asCharacter: String
+    }
+    
+    struct Movie: Codable {
+        let id: String
+        let rank: String
+        let title: String
+        let fullTitle: String
+        let year: String
+        let image: String
+        let crew: String
+        let imDbRating: String
+        let imDbRatingCount: String
+    }
+    
+    struct Top: Decodable {
+        let items: [Movie]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let jsonFile = "top250MoviesIMDB.json"
+        documentURL.appendPathComponent(jsonFile)
+        
+        var jsonString: String = ""
+        
+        do {
+            jsonString = try string(from: documentURL)
+        } catch FileManagerError.fileDoesntExist {
+            print("По адресу \(documentURL.path) нет файла!")
+        } catch {
+            print("Ошибка \(error)")
+        }
+        
+        guard let data = jsonString.data(using: .utf8) else { return }
+        
+        do {
+            let result = try JSONDecoder().decode(Top.self, from: data)
+        } catch {
+            print("Ошибка распоковки!")
+        }
+        
         questionFactory = QuestionFactory(delegate: self)
-        questionFactory?.requestNextQuestion()
+        self.questionFactory?.requestNextQuestion()
         alert = AlertPresenter(controller: self)
+        staticService = StaticServiceImplementation()
     }
     
     //MARK: - QuestionFactoryDelegate
@@ -92,7 +150,21 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     private func showNextQuesionOrResult() {
         if currentQuestionIndex == questionsAmount - 1 {
-            let text = "Ваш результат: \(corectAnswers) из \(questionsAmount)"
+            
+            staticService?.store(correct: corectAnswers, total: questionsAmount)
+            guard let gamesCount = staticService?.gamesCount else {
+                return
+            }
+            guard let bestResult = staticService?.bestResult else {
+                return
+            }
+            guard let totalAccuracy = staticService?.totalAccuracy else {
+                return
+            }
+            
+
+            let text = "Ваш результат: \(corectAnswers)/\(questionsAmount)\nКоличество сыгранных квизов: \(gamesCount)\nРекорд: \(bestResult.correct)/\(bestResult.total) \(bestResult.date.dateTimeString) \nСредняя точность: \(String(format: "%.2f", totalAccuracy))%"
+            
             let alertModel = AlertModel(
                 title: "Этот раунд окончен!",
                 text: text,

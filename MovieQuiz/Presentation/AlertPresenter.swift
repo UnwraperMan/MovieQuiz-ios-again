@@ -2,8 +2,7 @@
 //  AlertPresenter.swift
 //  MovieQuiz
 //
-//  Created by Unwraper Man on 23.12.2022.
-//
+
 import UIKit
 import Foundation
 
