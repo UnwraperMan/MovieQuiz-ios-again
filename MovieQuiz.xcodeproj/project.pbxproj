@@ -16,8 +16,6 @@
 		AD5EE5DE284D7887003966EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EE5DD284D7887003966EF /* UIColor+Extensions.swift */; };
 		AD77F5742857F8810062FB14 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77F5732857F8810062FB14 /* Date+Extensions.swift */; };
 		AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7AFA542836189F00399704 /* Array+Extensions.swift */; };
-		CA3A83AA295093F7005A96EE /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA3A83A8295093F7005A96EE /* YS Display-Medium.ttf */; };
-		CA3A83AB295093F7005A96EE /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA3A83A9295093F7005A96EE /* YS Display-Bold.ttf */; };
 		CA3B687B29540EC600AEDC1D /* QuestionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B687A29540EC600AEDC1D /* QuestionFactory.swift */; };
 		CA3B687E2954211500AEDC1D /* QuizStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B687D2954211500AEDC1D /* QuizStepViewModel.swift */; };
 		CA3B68802954213400AEDC1D /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B687F2954213400AEDC1D /* QuizResultViewModel.swift */; };
@@ -44,8 +42,6 @@
 		AD5EE5DD284D7887003966EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AD77F5732857F8810062FB14 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AD7AFA542836189F00399704 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		CA3A83A8295093F7005A96EE /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YS Display-Medium.ttf"; path = "../../../../Downloads/MovieQuizFonts/YS Display-Medium.ttf"; sourceTree = "<group>"; };
-		CA3A83A9295093F7005A96EE /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YS Display-Bold.ttf"; path = "../../../../Downloads/MovieQuizFonts/YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		CA3B687A29540EC600AEDC1D /* QuestionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactory.swift; sourceTree = "<group>"; };
 		CA3B687D2954211500AEDC1D /* QuizStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStepViewModel.swift; sourceTree = "<group>"; };
 		CA3B687F2954213400AEDC1D /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
@@ -58,6 +54,8 @@
 		CA8DBC81295851BF005AC859 /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
 		CA8DBC8329585EB1005AC859 /* StaticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticService.swift; sourceTree = "<group>"; };
 		CA8DBC85295860EF005AC859 /* StaticServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticServiceProtocol.swift; sourceTree = "<group>"; };
+		CAC50536295AC8F700D9D13A /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
+		CAC50537295AC8FF00D9D13A /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +82,7 @@
 		8F4738332848DE46005DF65E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA3A83A9295093F7005A96EE /* YS Display-Bold.ttf */,
-				CA3A83A8295093F7005A96EE /* YS Display-Medium.ttf */,
+				CAC50535295AC8E700D9D13A /* Fonts */,
 				AD1ABABC2831907F00B3E448 /* LaunchScreen.storyboard */,
 				AD1ABABA2831907F00B3E448 /* Assets.xcassets */,
 				AD1ABABF2831907F00B3E448 /* Info.plist */,
@@ -158,6 +155,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CAC50535295AC8E700D9D13A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CAC50537295AC8FF00D9D13A /* YS Display-Medium.ttf */,
+				CAC50536295AC8F700D9D13A /* YS Display-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,8 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1ABABE2831907F00B3E448 /* LaunchScreen.storyboard in Resources */,
-				CA3A83AA295093F7005A96EE /* YS Display-Medium.ttf in Resources */,
-				CA3A83AB295093F7005A96EE /* YS Display-Bold.ttf in Resources */,
 				AD1ABABB2831907F00B3E448 /* Assets.xcassets in Resources */,
 				AD1ABAB92831907B00B3E448 /* Main.storyboard in Resources */,
 			);

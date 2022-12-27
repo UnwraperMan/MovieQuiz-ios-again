@@ -10,5 +10,5 @@ struct AlertModel {
     let text: String
     let buttonText: String
     
-    var completion: (() -> Void)
+    let completion: (() -> Void)
 }
