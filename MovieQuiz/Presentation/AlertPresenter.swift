@@ -4,27 +4,26 @@
 //
 
 import UIKit
-import Foundation
 
-class AlertPresenter: AlertPresenterProtocol {
+final class AlertPresenter: AlertPresenterProtocol {
     
-    private weak var controller: UIViewController?
-    
-    init(controller: UIViewController) {
-        self.controller = controller
+    weak private var alertController: UIViewController?
+    init(alertController: UIViewController? = nil) {
+        self.alertController = alertController
     }
     
-    func show(result: AlertModel) {
+    func showAlert(result: AlertModel) {
         let alert = UIAlertController(
             title: result.title,
-            message: result.text,
+            message: result.message,
             preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: result.buttonText, style: .default) { _ in
-            result.completion()
-        }
+        let action = UIAlertAction(
+            title: result.buttonText,
+            style: .default,
+            handler: { _ in result.completion()
+            })
         
         alert.addAction(action)
-        controller?.present(alert, animated: true, completion: nil)
+        alertController?.present(alert, animated: true, completion: nil)
     }
 }
