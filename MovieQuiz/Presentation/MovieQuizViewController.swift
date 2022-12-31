@@ -13,7 +13,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private var alertPresenter: AlertPresenterProtocol?
     private var questionFactory: QuestionFactoryProtocol?
@@ -35,8 +35,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
              staticService = StaticServiceImplementation()
         
     }
-    
-    //MARK: - QuestionFactoryDelegate
     
     @IBAction func noButton(_ sender: UIButton) {
         noButton.isEnabled = false
@@ -168,19 +166,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     func didFailToLoadData(with error: Error) {
         showNetworkError(message: error.localizedDescription)
     }
-
-    
-    private enum FileManagerError: Error {
-        case fileDoesntExist
-    }
-    
-    private func string(from documentURL: URL) throws -> String {
-        if !FileManager.default.fileExists(atPath: documentURL.path) {
-            throw FileManagerError.fileDoesntExist
-        }
-        return try String(contentsOf: documentURL)
-    }
-
 }
 
 /*

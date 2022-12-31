@@ -6,7 +6,7 @@
 import Foundation
 
 struct QuizQuestion {
-    var image: Data
+    let image: Data
     var text: String
     var correctAnswer: Bool
 }
