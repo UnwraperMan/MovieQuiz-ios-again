@@ -35,15 +35,15 @@ final class StaticServiceImplementation: StaticService {
         userDefaults.set(self.total + amount, forKey: Keys.total.rawValue)
         userDefaults.set(self.correct + count, forKey: Keys.correct.rawValue)
         
-        if bestResult.compare(
+        if bestGame.compare(
             source: GameRecord(correct: count, total: amount, date: date)
         ){
-            bestResult = GameRecord(correct: count, total: amount, date: date)
+            bestGame = GameRecord(correct: count, total: amount, date: date)
         }
     }
     
     // добавляем модификатор доступа private(set), чтобы соответствовать протоколу
-    private(set) var bestResult: GameRecord {
+    private(set) var bestGame: GameRecord {
         get { // зачитка результатов
             guard let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
                   let record = try? JSONDecoder().decode(GameRecord.self, from: data) else {

@@ -9,5 +9,5 @@ protocol StaticService {
     func store(correct count: Int, total amount: Int)
     var totalAccuracy: Double { get }
     var gamesCount: Int { get }
-    var bestResult: GameRecord { get }
+    var bestGame: GameRecord { get }
 }
