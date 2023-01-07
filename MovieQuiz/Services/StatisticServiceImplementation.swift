@@ -5,7 +5,7 @@
 
 import Foundation
 
-final class StaticServiceImplementation: StaticService {
+final class StatisticServiceImplementation: StatsiticServiceProtocol {
     
     
     // чтобы каждый раз не обращаться к standard
