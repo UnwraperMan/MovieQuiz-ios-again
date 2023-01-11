@@ -7,6 +7,6 @@ import Foundation
 
 struct QuizQuestion {
     let image: Data
-    var text: String
-    var correctAnswer: Bool
+    let text: String
+    let correctAnswer: Bool
 }
